@@ -1,3 +1,11 @@
+# Go Testing
+
+## NOTE
+
+---
+
+- Remember that giving 100% coverage doesn't mean that it is a good metric to measure our testing quality (the result from testing can still be wrong)
+
 ## Testing Command
 
 ---
