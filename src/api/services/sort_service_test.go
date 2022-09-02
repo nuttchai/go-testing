@@ -59,6 +59,24 @@ func TestSortMoreThan10k(t *testing.T) {
 	}
 }
 
+func TestSortMoreThan30k(t *testing.T) {
+	number := 30000
+	elements := getElements(number)
+
+	Sort(elements)
+
+	if elements[number-1] != number {
+		fmt.Printf("expected: %v\n", number)
+		fmt.Printf("result: %v\n", elements[number-1])
+		t.Error("Expected from Sort result is incorrect")
+	}
+	if elements[0] != 0 {
+		fmt.Printf("expected: %v\n", 0)
+		fmt.Printf("result: %v\n", elements[0])
+		t.Error("Expected from Sort result is incorrect")
+	}
+}
+
 func BenchmarkSortMoreThan20k(b *testing.B) {
 	number := 20000
 	elements := getElements(number)
