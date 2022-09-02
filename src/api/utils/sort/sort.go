@@ -1,5 +1,7 @@
 package sort
 
+import "sort"
+
 func BubbleSort(elements []int) {
 	keepSorting := true
 	for keepSorting {
@@ -11,4 +13,8 @@ func BubbleSort(elements []int) {
 			}
 		}
 	}
+}
+
+func Sort(elements []int) {
+	sort.Ints(elements)
 }

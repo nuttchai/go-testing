@@ -21,3 +21,11 @@
 ### Run tests with coverage
 
 - `go test -cover`
+
+### Run tests with coverage and show the result in HTML
+
+- `go test -coverprofile=coverage.out && go tool cover -html=coverage.out`
+
+### Run tests with benchmark
+
+- `go test -bench=.`
