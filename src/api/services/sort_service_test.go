@@ -4,18 +4,9 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
+
+	"github.com/nuttchai/go-testing/src/api/utils/elements"
 )
-
-func getElements(n int) []int {
-	result := make([]int, n)
-	j := 0
-
-	for i := n; i > 1; i-- {
-		result[j] = i
-		j++
-	}
-	return result
-}
 
 // NOTE: If we only run TestConstant function, it will give 0% coverage
 // However, it is still a good practice to test a constant
@@ -43,7 +34,7 @@ func TestSort(t *testing.T) {
 
 func TestSortMoreThan10k(t *testing.T) {
 	number := 10000
-	elements := getElements(number)
+	elements := elements.GetElements(number)
 
 	Sort(elements)
 
@@ -61,7 +52,7 @@ func TestSortMoreThan10k(t *testing.T) {
 
 func TestSortMoreThan30k(t *testing.T) {
 	number := 30000
-	elements := getElements(number)
+	elements := elements.GetElements(number)
 
 	Sort(elements)
 
@@ -79,7 +70,7 @@ func TestSortMoreThan30k(t *testing.T) {
 
 func BenchmarkSortMoreThan20k(b *testing.B) {
 	number := 20000
-	elements := getElements(number)
+	elements := elements.GetElements(number)
 
 	for i := 0; i < b.N; i++ {
 		Sort(elements)

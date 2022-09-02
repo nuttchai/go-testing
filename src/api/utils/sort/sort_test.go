@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
+	"time"
+
+	"github.com/nuttchai/go-testing/src/api/utils/elements"
 )
 
 // NOTE: any test MUST starts with a word "Test"
@@ -69,5 +72,33 @@ func BenchmarkSort(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
 		Sort(elements)
+	}
+}
+
+func TestBubbleSortTimeout(t *testing.T) {
+	elements := elements.GetElements(10)
+	expected := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	timeoutChan := make(chan bool, 1)
+
+	// NOTE: this goroutine runs BubbleSort
+	go func() {
+		BubbleSort(elements)
+		timeoutChan <- false
+	}()
+
+	// NOTE: this goroutine counts timeout
+	go func() {
+		time.Sleep(500 * time.Millisecond)
+		timeoutChan <- true
+	}()
+
+	if <-timeoutChan {
+		t.Error("BubbleSort took more than 500 millisecond")
+	}
+
+	if !reflect.DeepEqual(expected, elements) {
+		fmt.Printf("expected: %v\n", expected)
+		fmt.Printf("result: %v\n", elements)
+		t.Error("Expected from BubbleSort result is incorrect")
 	}
 }
