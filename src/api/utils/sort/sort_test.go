@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/nuttchai/go-testing/src/api/utils/elements"
+	"github.com/stretchr/testify/assert"
 )
 
 // NOTE: any test MUST starts with a word "Test"
@@ -101,4 +102,22 @@ func TestBubbleSortTimeout(t *testing.T) {
 		fmt.Printf("result: %v\n", elements)
 		t.Error("Expected from BubbleSort result is incorrect")
 	}
+}
+
+// NOTE: Test function with asset (another way to test unit test)
+// If the a part of the function starts to fail, the test will immediately stop at that point, instead of continue running the remaining tests of the function like above)
+func TestBubbleSortWithAsset(t *testing.T) {
+	elements := elements.GetElements(10)
+
+	assert.NotNil(t, elements)
+	assert.EqualValues(t, 10, len(elements))
+	assert.EqualValues(t, 10, elements[0])
+	assert.EqualValues(t, 1, elements[len(elements)-1])
+
+	BubbleSort(elements)
+
+	assert.NotNil(t, elements)
+	assert.EqualValues(t, 10, len(elements))
+	assert.EqualValues(t, 1, elements[0], "first element should be 1")
+	assert.EqualValues(t, 10, elements[len(elements)-1], "last element should be 10")
 }
