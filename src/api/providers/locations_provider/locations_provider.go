@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/mercadolibre/golang-restclient/rest"
+	"github.com/federicoleon/golang-restclient/rest"
 	"github.com/nuttchai/go-testing/src/api/domain/locations"
 	"github.com/nuttchai/go-testing/src/api/utils/errors"
 )
@@ -28,7 +28,7 @@ func GetCountry(countryId string) (*locations.Country, *errors.ApiError) {
 		if err := json.Unmarshal(response.Bytes(), &apiErr); err != nil {
 			return nil, &errors.ApiError{
 				Status:  http.StatusInternalServerError,
-				Message: fmt.Sprintf("invalid error response when getting country %s", countryId),
+				Message: fmt.Sprintf("invalid error interface when getting country %s", countryId),
 			}
 		}
 		return nil, &apiErr

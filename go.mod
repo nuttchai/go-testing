@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/federicoleon/golang-restclient v0.0.0-20191104170228-162ed620df66 // indirect
 	github.com/mercadolibre/golang-restclient v0.0.0-20170701022150-51958130a0a0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.4.0 // indirect
